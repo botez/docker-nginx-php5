@@ -23,7 +23,7 @@ RUN echo "cgi.fix_pathinfo = 0;" >> /etc/php5/fpm/php.ini
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 ## Create default index.php for localhost:80
-RUN echo "<?php phpinfo(); ?>" > /var/www/index.php
+RUN mkdir /var/www && echo "<?php phpinfo(); ?>" > /var/www/index.php
 
 EXPOSE 80
 
