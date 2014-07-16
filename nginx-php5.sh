@@ -4,8 +4,8 @@
 if [ ! -d /config/conf.d ]; then
   cp -rf /etc/nginx/conf.d /config
 fi;
-ln -s 
 
+ 
 if [ ! -d /config/sites-available ]; then
   cp -rf /etc/nginx/sites-available /config
 fi;
@@ -28,6 +28,6 @@ ln -s /config/conf.d /etc/nginx/conf.d
 ln -s /config/sites-available /etc/nginx/sites-available
 ln -s /config/sites-enabled /etc/nginx/sites-enabled
 ln -s /config/nginx.conf /etc/nginx/nginx.conf
-#ln -s /web /var/www
+ln -s /web /var/www
 
 service php5-fpm start && nginx
