@@ -32,4 +32,7 @@ EXPOSE 80
 VOLUME /config
 VOLUME /web
 
-CMD service php5-fpm start && nginx
+# Add nginx and php5-fpm to runit
+RUN mkdir /etc/service/nginx-php5
+ADD nginx-php5.sh /etc/service/nginx-php5/run
+RUN chmod +x /etc/service/nginx-php5/run
