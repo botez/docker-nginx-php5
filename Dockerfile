@@ -18,6 +18,7 @@ RUN apt-get -y install dialog net-tools lynx nano wget
 RUN apt-get -y install python-software-properties
 RUN apt-get -y install nginx php5-fpm php5-mysql php-apc php5-imagick php5-imap php5-mcrypt
 
+RUN mkdir /var/www
 RUN ln -s /web /var/www
 RUN ln -s /config /etc/nginx
 
