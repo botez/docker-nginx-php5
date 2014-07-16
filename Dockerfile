@@ -18,6 +18,10 @@ RUN apt-get -y install dialog net-tools lynx nano wget
 RUN apt-get -y install python-software-properties
 RUN apt-get -y install nginx php5-fpm php5-mysql php-apc php5-imagick php5-imap php5-mcrypt
 
+## Move existing default sites-available config and put in mine
+RUN mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.orig
+ADD default /etc/nginx/sites-available/default 
+
 ## Make changes to config files
 RUN echo "cgi.fix_pathinfo = 0;" >> /etc/php5/fpm/php.ini
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
