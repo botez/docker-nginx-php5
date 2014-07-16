@@ -23,8 +23,8 @@ RUN rm -rf /var/www
 RUN ln -s /web /var/www
 
 ## Link sites-available and conf.d to the /config directory for ability to edit config files
-RUN ln -s /config/sites-available /etc/nginx/sites-available
-RUN ln -s /config/nginx.conf /etc/nginx/nginx.conf
+RUN ln -s /etc/nginx/sites-available /config/sites-available
+RUN ln -s /etc/nginx/nginx.conf /config/nginx.conf
 
 ## Move existing default sites-available config and put in mine
 RUN mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.orig
