@@ -22,6 +22,7 @@ RUN apt-get -y install nginx php5-fpm php5-mysql php-apc php5-imagick php5-imap 
 RUN ln -s /web /var/www
 
 ## Link sites-available and conf.d to the /config directory for ability to edit config files
+RUN mkdir /config
 RUN ln -s /etc/nginx/sites-available /config/sites-available 
 RUN ln -s /etc/nginx/nginx.conf /config/nginx.conf
 
