@@ -22,10 +22,6 @@ RUN apt-get -y install nginx php5-fpm php5-mysql php-apc php5-imagick php5-imap 
 RUN rm -rf /var/www
 RUN ln -s /web /var/www
 
-## Link sites-available and conf.d to the /config directory for ability to edit config files
-RUN ln -s /etc/nginx/sites-available /config/sites-available
-RUN ln -s /etc/nginx/nginx.conf /config/nginx.conf
-
 ## Move existing default sites-available config and put in mine
 RUN mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.orig
 ADD default /etc/nginx/sites-available/default 
@@ -42,6 +38,10 @@ EXPOSE 80
 # Create the ability to access the nginx config directory and to the /var/www directory from outside the container
 VOLUME /config
 VOLUME /web
+
+## Link sites-available and conf.d to the /config directory for ability to edit config files
+RUN ln -s /config/sites-available /etc/nginx/sites-available
+RUN ln -s /config/nginx.conf /etc/nginx/nginx.conf
 
 # Add nginx and php5-fpm to runit
 RUN mkdir /etc/service/nginx-php5
